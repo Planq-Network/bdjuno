@@ -7,6 +7,7 @@ import (
 	initcmd "github.com/forbole/juno/v2/cmd/init"
 	parsecmd "github.com/forbole/juno/v2/cmd/parse"
 	"github.com/forbole/juno/v2/modules/messages"
+	planqapp "github.com/planq-network/planq/app"
 
 	fixcmd "github.com/forbole/bdjuno/v2/cmd/fix"
 	migratecmd "github.com/forbole/bdjuno/v2/cmd/migrate"
@@ -52,6 +53,7 @@ func main() {
 func getBasicManagers() []module.BasicManager {
 	return []module.BasicManager{
 		simapp.ModuleBasics,
+		planqapp.ModuleBasics,
 	}
 }
 
