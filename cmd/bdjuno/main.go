@@ -17,6 +17,7 @@ import (
 	"github.com/forbole/bdjuno/v2/modules"
 
 	gaiaapp "github.com/cosmos/gaia/v6/app"
+	planqapp "github.com/planq-network/planq/app"
 )
 
 func main() {
@@ -53,6 +54,7 @@ func main() {
 func getBasicManagers() []module.BasicManager {
 	return []module.BasicManager{
 		gaiaapp.ModuleBasics,
+		planqapp.ModuleBasics,
 	}
 }
 
