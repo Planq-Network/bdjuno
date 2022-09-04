@@ -5,9 +5,9 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/types/query"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
-	"github.com/forbole/juno/v2/node/remote"
+	"github.com/forbole/juno/v3/node/remote"
 
-	stakingsource "github.com/forbole/bdjuno/v2/modules/staking/source"
+	stakingsource "github.com/forbole/bdjuno/v3/modules/staking/source"
 )
 
 var (
@@ -69,82 +69,6 @@ func (s Source) GetValidatorsWithStatus(height int64, status string) ([]stakingt
 	}
 
 	return validators, nil
-}
-
-// GetDelegation implements stakingsource.Source
-func (s Source) GetDelegation(height int64, delegator string, valOperAddr string) (stakingtypes.DelegationResponse, error) {
-	res, err := s.stakingClient.Delegation(
-		remote.GetHeightRequestContext(s.Ctx, height),
-		&stakingtypes.QueryDelegationRequest{
-			ValidatorAddr: valOperAddr,
-			DelegatorAddr: delegator,
-		},
-	)
-	if err != nil {
-		return stakingtypes.DelegationResponse{}, err
-	}
-
-	return *res.DelegationResponse, nil
-}
-
-// GetValidatorDelegations implements stakingsource.Source
-func (s Source) GetValidatorDelegations(height int64, validator string) ([]stakingtypes.DelegationResponse, error) {
-	ctx := remote.GetHeightRequestContext(s.Ctx, height)
-
-	var delegations []stakingtypes.DelegationResponse
-	var nextKey []byte
-	var stop = false
-	for !stop {
-		res, err := s.stakingClient.ValidatorDelegations(
-			ctx,
-			&stakingtypes.QueryValidatorDelegationsRequest{
-				ValidatorAddr: validator,
-				Pagination: &query.PageRequest{
-					Key:   nextKey,
-					Limit: 100, // Query 100 delegations at time
-				},
-			},
-		)
-		if err != nil {
-			return nil, err
-		}
-
-		nextKey = res.Pagination.NextKey
-		stop = len(res.Pagination.NextKey) == 0
-		delegations = append(delegations, res.DelegationResponses...)
-	}
-
-	return delegations, nil
-}
-
-// GetDelegatorDelegations implements stakingsource.Source
-func (s Source) GetDelegatorDelegations(height int64, delegator string) ([]stakingtypes.DelegationResponse, error) {
-	ctx := remote.GetHeightRequestContext(s.Ctx, height)
-
-	var delegations []stakingtypes.DelegationResponse
-	var nextKey []byte
-	var stop = false
-	for !stop {
-		res, err := s.stakingClient.DelegatorDelegations(
-			ctx,
-			&stakingtypes.QueryDelegatorDelegationsRequest{
-				DelegatorAddr: delegator,
-				Pagination: &query.PageRequest{
-					Key:   nextKey,
-					Limit: 100, // Query 100 delegations at time
-				},
-			},
-		)
-		if err != nil {
-			return nil, err
-		}
-
-		nextKey = res.Pagination.NextKey
-		stop = len(res.Pagination.NextKey) == 0
-		delegations = append(delegations, res.DelegationResponses...)
-	}
-
-	return delegations, nil
 }
 
 // GetPool implements stakingsource.Source

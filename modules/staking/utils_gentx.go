@@ -7,8 +7,8 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
-	"github.com/forbole/bdjuno/v2/modules/staking/keybase"
-	"github.com/forbole/bdjuno/v2/types"
+	"github.com/forbole/bdjuno/v3/modules/staking/keybase"
+	"github.com/forbole/bdjuno/v3/types"
 )
 
 // StoreValidatorFromMsgCreateValidator handles properly a MsgCreateValidator instance by
@@ -48,19 +48,6 @@ func (m *Module) StoreValidatorsFromMsgCreateValidator(height int64, msg *stakin
 			height,
 		),
 	)
-	if err != nil {
-		return err
-	}
-
-	// Save the first self-delegations
-	err = m.db.SaveDelegations([]types.Delegation{
-		types.NewDelegation(
-			msg.DelegatorAddress,
-			msg.ValidatorAddress,
-			msg.Value,
-			height,
-		),
-	})
 	if err != nil {
 		return err
 	}

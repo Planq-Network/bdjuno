@@ -9,12 +9,12 @@ import (
 	codectypes "github.com/cosmos/cosmos-sdk/codec/types"
 	"github.com/gogo/protobuf/proto"
 
-	"github.com/forbole/bdjuno/v2/types"
+	"github.com/forbole/bdjuno/v3/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
 
-	dbtypes "github.com/forbole/bdjuno/v2/database/types"
+	dbtypes "github.com/forbole/bdjuno/v3/database/types"
 )
 
 func (suite *DbTestSuite) TestBigDipperDb_SaveGovParams() {
@@ -508,6 +508,8 @@ func (suite *DbTestSuite) TestBigDipperDb_SaveProposalStakingPoolSnapshot() {
 	snapshot := types.NewProposalStakingPoolSnapshot(1, types.NewPool(
 		sdk.NewInt(100),
 		sdk.NewInt(200),
+		sdk.NewInt(20),
+		sdk.NewInt(30),
 		10,
 	))
 	err := suite.database.SaveProposalStakingPoolSnapshot(snapshot)
@@ -530,6 +532,8 @@ func (suite *DbTestSuite) TestBigDipperDb_SaveProposalStakingPoolSnapshot() {
 	err = suite.database.SaveProposalStakingPoolSnapshot(types.NewProposalStakingPoolSnapshot(1, types.NewPool(
 		sdk.NewInt(200),
 		sdk.NewInt(500),
+		sdk.NewInt(14),
+		sdk.NewInt(10),
 		9,
 	)))
 	suite.Require().NoError(err)
@@ -551,6 +555,8 @@ func (suite *DbTestSuite) TestBigDipperDb_SaveProposalStakingPoolSnapshot() {
 	err = suite.database.SaveProposalStakingPoolSnapshot(types.NewProposalStakingPoolSnapshot(1, types.NewPool(
 		sdk.NewInt(500),
 		sdk.NewInt(1000),
+		sdk.NewInt(20),
+		sdk.NewInt(30),
 		10,
 	)))
 	suite.Require().NoError(err)
@@ -572,6 +578,8 @@ func (suite *DbTestSuite) TestBigDipperDb_SaveProposalStakingPoolSnapshot() {
 	err = suite.database.SaveProposalStakingPoolSnapshot(types.NewProposalStakingPoolSnapshot(1, types.NewPool(
 		sdk.NewInt(1000),
 		sdk.NewInt(2000),
+		sdk.NewInt(80),
+		sdk.NewInt(40),
 		11,
 	)))
 	suite.Require().NoError(err)

@@ -3,24 +3,22 @@ package bank
 import (
 	"github.com/cosmos/cosmos-sdk/codec"
 
-	"github.com/forbole/bdjuno/v2/database"
-	"github.com/forbole/bdjuno/v2/modules/bank/source"
+	"github.com/forbole/bdjuno/v3/database"
+	"github.com/forbole/bdjuno/v3/modules/bank/source"
 
-	junomessages "github.com/forbole/juno/v2/modules/messages"
+	junomessages "github.com/forbole/juno/v3/modules/messages"
 
-	"github.com/forbole/juno/v2/modules"
+	"github.com/forbole/juno/v3/modules"
 )
 
 var (
 	_ modules.Module                   = &Module{}
 	_ modules.PeriodicOperationsModule = &Module{}
-	_ modules.GenesisModule            = &Module{}
-	_ modules.MessageModule            = &Module{}
 )
 
 // Module represents the x/bank module
 type Module struct {
-	cdc codec.Marshaler
+	cdc codec.Codec
 	db  *database.Db
 
 	messageParser junomessages.MessageAddressesParser
@@ -29,7 +27,7 @@ type Module struct {
 
 // NewModule returns a new Module instance
 func NewModule(
-	messageParser junomessages.MessageAddressesParser, keeper source.Source, cdc codec.Marshaler, db *database.Db,
+	messageParser junomessages.MessageAddressesParser, keeper source.Source, cdc codec.Codec, db *database.Db,
 ) *Module {
 	return &Module{
 		cdc:           cdc,

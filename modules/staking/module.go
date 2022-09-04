@@ -2,44 +2,35 @@ package staking
 
 import (
 	"github.com/cosmos/cosmos-sdk/codec"
-	"github.com/forbole/juno/v2/modules"
+	"github.com/forbole/juno/v3/modules"
 
-	"github.com/forbole/bdjuno/v2/database"
-	stakingsource "github.com/forbole/bdjuno/v2/modules/staking/source"
+	"github.com/forbole/bdjuno/v3/database"
+	stakingsource "github.com/forbole/bdjuno/v3/modules/staking/source"
 )
 
 var (
-	_ modules.Module        = &Module{}
-	_ modules.GenesisModule = &Module{}
-	_ modules.BlockModule   = &Module{}
-	_ modules.MessageModule = &Module{}
+	_ modules.Module                   = &Module{}
+	_ modules.GenesisModule            = &Module{}
+	_ modules.BlockModule              = &Module{}
+	_ modules.MessageModule            = &Module{}
+	_ modules.PeriodicOperationsModule = &Module{}
 )
 
 // Module represents the x/staking module
 type Module struct {
-	cdc            codec.Marshaler
-	db             *database.Db
-	source         stakingsource.Source
-	bankModule     BankModule
-	distrModule    DistrModule
-	historyModule  HistoryModule
-	slashingModule SlashingModule
+	cdc    codec.Codec
+	db     *database.Db
+	source stakingsource.Source
 }
 
 // NewModule returns a new Module instance
 func NewModule(
-	source stakingsource.Source,
-	bankModule BankModule, distrModule DistrModule, historyModule HistoryModule, slashingModule SlashingModule,
-	cdc codec.Marshaler, db *database.Db,
+	source stakingsource.Source, cdc codec.Codec, db *database.Db,
 ) *Module {
 	return &Module{
-		cdc:            cdc,
-		db:             db,
-		source:         source,
-		bankModule:     bankModule,
-		distrModule:    distrModule,
-		historyModule:  historyModule,
-		slashingModule: slashingModule,
+		cdc:    cdc,
+		db:     db,
+		source: source,
 	}
 }
 
