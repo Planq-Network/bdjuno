@@ -11,7 +11,7 @@ require (
 	github.com/jmoiron/sqlx v1.3.5
 	github.com/lib/pq v1.10.7
 	github.com/pelletier/go-toml v1.9.5
-	github.com/planq-network/planq v0.6.1-0.20220307173304-4e1f8c4ce088
+	github.com/planq-network/planq v0.6.1-0.20221025120036-e528bfbc6bab
 	github.com/prometheus/client_golang v1.14.0
 	github.com/proullon/ramsql v0.0.0-20181213202341-817cee58a244
 	github.com/rs/zerolog v1.28.0
@@ -156,7 +156,7 @@ replace (
 	github.com/cosmos/cosmos-sdk => github.com/cosmos/cosmos-sdk v0.45.4
 	github.com/cosmos/iavl => github.com/cosmos/iavl v0.17.3
 	github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
-	github.com/planq-network/planq => github.com/planq-network/planq v0.6.1-0.20220402102120-a3c929134d35
+	github.com/planq-network/planq => github.com/planq-network/planq v0.6.1-0.20221025120036-e528bfbc6bab
 	github.com/tendermint/tendermint => github.com/forbole/tendermint v0.34.13-0.20210820072129-a2a4af55563d
 	google.golang.org/grpc => google.golang.org/grpc v1.33.2
 )

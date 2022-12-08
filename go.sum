@@ -872,8 +872,8 @@ github.com/pkg/profile v1.2.1/go.mod h1:hJw3o1OdXxsrSjjVksARp5W95eeEaEfptyVZyv6J
 github.com/pkg/sftp v1.10.1/go.mod h1:lYOWFsE0bwd1+KfKJaKeuokY15vzFx25BLbzYYoAxZI=
 github.com/pkg/sftp v1.13.1/go.mod h1:3HaPG6Dq1ILlpPZRO0HVMrsydcdLt6HRDccSgb87qRg=
 github.com/pkg/term v0.0.0-20180730021639-bffc007b7fd5/go.mod h1:eCbImbZ95eXtAUIbLAuAVnBnwf83mjf6QIVH8SHYwqQ=
-github.com/planq-network/planq v0.6.1-0.20220402102120-a3c929134d35 h1:Zl5mP+TmUT8iW2m7Bh2X5mp6HzhYEAENDmOj6LFmIYY=
-github.com/planq-network/planq v0.6.1-0.20220402102120-a3c929134d35/go.mod h1:Gd3qU108na8Ps072JT9ByDLXwXm7D5gIi/KVvqhO76Y=
+github.com/planq-network/planq v0.6.1-0.20221025120036-e528bfbc6bab h1:A2kWCVI1aZFGsCkM7JC3eyUTJS2/+mRNiN/3ci1Im3Y=
+github.com/planq-network/planq v0.6.1-0.20221025120036-e528bfbc6bab/go.mod h1:Gd3qU108na8Ps072JT9ByDLXwXm7D5gIi/KVvqhO76Y=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/posener/complete v1.1.1/go.mod h1:em0nMJCgc9GFtwrmVmEMR/ZL6WyhyjMBndrE9hABlRI=
