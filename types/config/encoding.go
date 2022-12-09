@@ -2,9 +2,9 @@ package config
 
 import (
 	"github.com/cosmos/cosmos-sdk/simapp/params"
-	"github.com/cosmos/cosmos-sdk/std"
 	"github.com/cosmos/cosmos-sdk/types/module"
-	evmenc "github.com/evmos/ethermint/encoding"
+
+	evmenc "github.com/planq-network/planq/encoding"
 )
 
 // MakeEncodingConfig creates an EncodingConfig to properly handle all the messages
@@ -12,11 +12,6 @@ func MakeEncodingConfig(managers []module.BasicManager) func() params.EncodingCo
 	return func() params.EncodingConfig {
 		manager := mergeBasicManagers(managers)
 		encodingConfig := evmenc.MakeConfig(manager)
-		std.RegisterLegacyAminoCodec(encodingConfig.Amino)
-		std.RegisterInterfaces(encodingConfig.InterfaceRegistry)
-
-		manager.RegisterLegacyAminoCodec(encodingConfig.Amino)
-		manager.RegisterInterfaces(encodingConfig.InterfaceRegistry)
 
 		return encodingConfig
 	}
