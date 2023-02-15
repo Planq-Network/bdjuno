@@ -2,6 +2,8 @@ package main
 
 import (
 	"github.com/cosmos/cosmos-sdk/types/module"
+	migratecmd "github.com/forbole/bdjuno/v4/cmd/migrate"
+	parsecmd "github.com/forbole/bdjuno/v4/cmd/parse"
 	"github.com/forbole/juno/v4/cmd"
 	initcmd "github.com/forbole/juno/v4/cmd/init"
 	parsetypes "github.com/forbole/juno/v4/cmd/parse/types"
@@ -9,15 +11,12 @@ import (
 	"github.com/forbole/juno/v4/modules/messages"
 	planqapp "github.com/planq-network/planq/app"
 
-	migratecmd "github.com/forbole/bdjuno/v4/cmd/migrate"
-	parsecmd "github.com/forbole/bdjuno/v4/cmd/parse"
-
 	"github.com/forbole/bdjuno/v4/types/config"
 
 	"github.com/forbole/bdjuno/v4/database"
 	"github.com/forbole/bdjuno/v4/modules"
 
-	gaiaapp "github.com/cosmos/gaia/v7/app"
+	gaiaapp "github.com/cosmos/cosmos-sdk/simapp"
 )
 
 func main() {

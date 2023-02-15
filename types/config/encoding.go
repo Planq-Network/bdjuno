@@ -4,7 +4,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/simapp/params"
 	"github.com/cosmos/cosmos-sdk/types/module"
 
-	evmenc "github.com/planq-network/planq/encoding"
+	evmenc "github.com/evmos/ethermint/encoding"
 )
 
 // MakeEncodingConfig creates an EncodingConfig to properly handle all the messages
