@@ -2,21 +2,22 @@ package main
 
 import (
 	"github.com/cosmos/cosmos-sdk/types/module"
-	migratecmd "github.com/forbole/bdjuno/v4/cmd/migrate"
-	parsecmd "github.com/forbole/bdjuno/v4/cmd/parse"
-	"github.com/forbole/juno/v4/cmd"
-	initcmd "github.com/forbole/juno/v4/cmd/init"
-	parsetypes "github.com/forbole/juno/v4/cmd/parse/types"
-	startcmd "github.com/forbole/juno/v4/cmd/start"
-	"github.com/forbole/juno/v4/modules/messages"
+	"github.com/forbole/juno/v5/cmd"
+	initcmd "github.com/forbole/juno/v5/cmd/init"
+	parsetypes "github.com/forbole/juno/v5/cmd/parse/types"
+	startcmd "github.com/forbole/juno/v5/cmd/start"
+	"github.com/forbole/juno/v5/modules/messages"
+
+	migratecmd "github.com/forbole/callisto/v4/cmd/migrate"
+	parsecmd "github.com/forbole/callisto/v4/cmd/parse"
 	planqapp "github.com/planq-network/planq/app"
 
-	"github.com/forbole/bdjuno/v4/types/config"
+	"github.com/forbole/callisto/v4/types/config"
 
-	"github.com/forbole/bdjuno/v4/database"
-	"github.com/forbole/bdjuno/v4/modules"
+	"cosmossdk.io/simapp"
 
-	gaiaapp "github.com/cosmos/cosmos-sdk/simapp"
+	"github.com/forbole/callisto/v4/database"
+	"github.com/forbole/callisto/v4/modules"
 )
 
 func main() {
@@ -55,7 +56,7 @@ func main() {
 // This should be edited by custom implementations if needed.
 func getBasicManagers() []module.BasicManager {
 	return []module.BasicManager{
-		gaiaapp.ModuleBasics,
+		simapp.ModuleBasics,
 		planqapp.ModuleBasics,
 	}
 }
