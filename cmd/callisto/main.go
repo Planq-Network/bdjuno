@@ -10,7 +10,7 @@ import (
 
 	migratecmd "github.com/forbole/callisto/v4/cmd/migrate"
 	parsecmd "github.com/forbole/callisto/v4/cmd/parse"
-	planqapp "github.com/planq-network/planq/app"
+	planqapp "github.com/planq-network/planq/v2/app"
 
 	"github.com/forbole/callisto/v4/types/config"
 

@@ -4,7 +4,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/std"
 	"github.com/cosmos/cosmos-sdk/types/module"
 	"github.com/forbole/juno/v5/types/params"
-	evmenc "github.com/planq-network/planq/encoding"
+	evmenc "github.com/planq-network/planq/v2/encoding"
 )
 
 // MakeEncodingConfig creates an EncodingConfig to properly handle all the messages
@@ -16,7 +16,8 @@ func MakeEncodingConfig(managers []module.BasicManager) func() params.EncodingCo
 		manager := mergeBasicManagers(managers)
 		manager.RegisterLegacyAminoCodec(encodingConfig.Amino)
 		manager.RegisterInterfaces(encodingConfig.InterfaceRegistry)
-		encodingConfig := evmenc.MakeConfig(manager)
+
+		encodingConfig = params.EncodingConfig(evmenc.MakeConfig(manager))
 		return encodingConfig
 	}
 }
